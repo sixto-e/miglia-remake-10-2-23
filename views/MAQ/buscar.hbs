@@ -1,0 +1,179 @@
+{{#if maquinarias}}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 sinpadding">
+			{{> lateralBeta}}
+		</div>
+		<!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+		<div class="col-md-10 sinpadding">
+			{{> cabeceraBeta}}<!--cabecera-->
+			<div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+				<div class="col-md-12 box-cajas">
+
+					<div class="row mt-2 mb-2">
+						<div class="col-md-12">
+							<h4>Buscar maquinaria</h4>
+						</div>
+					</div>
+
+					<div class="row mb-2">
+
+						<form action="/buscar-maquinaria/create" method="get">
+
+							<div class="row">
+
+								<div class="col-md-8">
+									<label for="Maquinaria">Seleccione categoría</label>
+
+									<select class="form-control" name="id_tipo_maq" id="">
+
+										<option value="" select> Elige una opción ↓ </option>
+										{{#each tiposDeMaquinas}}
+										<option value="{{id}}">{{tipo}}</option>
+										{{/each}}
+									</select>
+								</div>
+								<div class="col-md-4">
+									<button class="btn btn-sm btn-warning mt-4" type="submit"><i
+											class="fa-solid fa-magnifying-glass"></i>
+										Buscar</button>
+								</div>
+							</div>
+
+						</form>
+
+
+
+					</div>
+
+					<!--Listado de maquinarias activas-->
+
+
+					<div class="container-fluid">
+						<div class="row">
+							{{#each maquinarias}}
+							<div class="col-md-4 mt-3 mb-3">
+								<div class="card">
+
+
+									<img src="/images/engranaje.jpg" class="img-fluid" width="600" height="400"
+										alt="No hay imagen cargada">
+
+
+									<div class="card-body">
+										<button class="{{estilo}}">{{estado}}</button>
+										<h5 class="card-title">{{tipo}}</h5>
+
+										<p class="card-text" style="height: 110px;">
+											<span style="color: green;">{{modelo}}</span>
+											<br>
+											{{modalidad}}
+											<br>
+											{{disponibilidad}}
+											<br>
+											<strong>$ {{precio}}</strong>
+										</p>
+
+
+										<div class="dropdown">
+											<button class="btn-sm btn btn-outline-dark dropdown-toggle" type="button"
+												data-bs-toggle="dropdown" aria-expanded="false">
+												Acciones
+											</button>
+											<ul class="dropdown-menu">
+
+												<li><a class="dropdown-item"
+														href="/maquinaria/{{id_maquinaria}}">Ver</a></li>
+
+												<li><a class="dropdown-item" href="#"></a></li>
+									
+												<li><a class="dropdown-item"
+														href="/maquinaria/borrar/{{id_maquinaria}}">Borrar</a></li>
+
+											</ul>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							{{/each}}
+						</div>
+					</div>
+
+
+				</div><!--fin col-md-12 box-cajas-->
+
+			</div><!--fin row box-ind-->
+
+		</div><!--fin col-md-10-->
+
+	</div><!--fin row-->
+
+	<div><!--fin container fluid-->
+
+
+		{{else}}
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2 sinpadding">
+					{{> lateralBeta}}
+				</div>
+				<!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+				<div class="col-md-10 sinpadding">
+					{{> cabeceraBeta}}<!--cabecera-->
+					<div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+						<div class="col-md-12 box-cajas">
+
+							<div class="row mt-2 mb-2">
+								<div class="col-md-12">
+									<h4>Buscar maquinaria</h4>
+								</div>
+							</div>
+
+							<div class="row mb-2">
+
+								<form action="/buscar-maquinaria/create" method="get">
+
+									<div class="row">
+
+										<div class="col-md-8">
+											<label for="Maquinaria">Seleccione categoría</label>
+
+											<select class="form-control" name="id_tipo_maq" id="">
+
+												<option value="" select> Elige una opción ↓ </option>
+												{{#each tiposDeMaquinas}}
+												<option value="{{id}}">{{tipo}}</option>
+												{{/each}}
+											</select>
+										</div>
+										<div class="col-md-4">
+											<button class="btn btn-sm btn-warning mt-4" type="submit"><i
+													class="fa-solid fa-magnifying-glass"></i>
+												Buscar</button>
+										</div>
+									</div>
+
+								</form>
+
+							</div>
+
+							<div class="row">
+								<div class="col-md-9">
+									<div class="alert alert-danger" role="alert">
+										No se encontraron maquinarias de éste tipo. Intenta con otro
+									</div>
+
+								</div>
+							</div>
+
+						</div><!--fin col-md-12 box-cajas-->
+
+					</div><!--fin row box-ind-->
+
+				</div><!--fin col-md-10-->
+
+			</div><!--fin row-->
+
+			<div><!--fin container fluid-->
+				{{/if}}

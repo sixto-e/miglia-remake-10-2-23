@@ -1,0 +1,139 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+
+        <div class="col-md-12 box-cajas">
+
+          <!--Icono documento-->
+          <div class="row p-2 fondo-color-gris-icono ">
+
+            <div class="col-md-12 d-flex justify-content-start align-items-center">
+
+              <i class='bx bxs-file-archive'> </i>
+
+              <h6 class="m-2">Detalles de la interacción</h6>
+
+            </div>
+
+          </div>
+          <!--Fin Icono documento-->
+
+          {{#each interaccion_single_final}}
+          <div class="row mt-2 mb-2">
+
+            <div class="col-md-4" style="padding-left: 25px;">
+              Día de la interacción: <strong> {{dia_de_interaccion}}</strong>
+            </div>
+
+            <div class="col-md-4 prx_cont">
+              Próximo contacto: <strong class="bg-warning"> {{prox_encuentro}}</strong>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-end">
+              <a href="/interaccion/editar/{{id_interaccion}}" class="btn btn-danger btn-sm"><i
+                  class='bx bxs-edit-alt'></i> Editar</a>
+            </div>
+
+          </div>
+          {{/each}}
+
+
+          <!--Contenedor info-->
+          <div class="container-fluid mt-2">
+
+            <!--Información-->
+            {{#each interaccion_single_final}}
+            <div class="row">
+              <!--1ra col-->
+              <div class="col-md-4">Estado de interacci&oacute;n: <strong>{{estado_inter}}</strong><br />
+
+                Le interesa: <strong>{{interes}} </strong><br />
+
+                Tipo de m&aacute;quina: <strong>{{tipo}} {{estado}}</strong><br />
+
+                Reponsable: <strong>{{responsable}}</strong>
+
+              </div>
+              <!--Fin 1ra col-->
+
+              <!--2da col-->
+              <div class="col-md-4">
+                Raz&oacute;n Social: <strong>{{razon_social}} </strong><br />
+
+                Contacto: <strong>{{nombre_contacto}} </strong><br />
+
+                Cuit: <strong>{{cuit}}</strong><br />
+
+                Sem&aacute;foro comercial: <strong>{{semaforo_comercial}}</strong>
+
+              </div>
+              <!--Fin 2da col-->
+
+              <!--3er col-->
+              <div class="col-md-4">
+                Localidad: <strong>{{localidad}}, {{provincia}}</strong><br />
+
+                Direcci&oacute;n: <strong>{{direccion}} </strong><br />
+
+                Mail: <strong>{{mail}}</strong> <br>
+
+                <div class="mt-1"></div>
+
+                Tel&eacute;fono:
+                <strong>{{telefono}}
+
+                  <a style="color: #fff; border-radius:5px" class="p-2  bg-danger btn-sm"
+                    href="tel:{{telefono}}"><i class='bx bx-xs bxs-phone-outgoing icono-llamada'></i></a>
+
+                </strong>
+                
+                <div class="mb-3"></div>
+              </div>
+              <!--Fin 3er col-->
+
+            </div>
+            <!--Fin Contenedor info-->
+            <!--Contenedor observación-->
+
+            <div class="row mt-4">
+              <h6>Observación sobre la Interacción</h6>
+              <div class="textarea-container">
+                <textarea readonly name="observacion"
+                  placeholder="No hay observaciones cargadas. Puedes agregar una al editar los datos de la interacción.">{{observacion_interaccion}}</textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <h6>Observación sobre el Cliente</h6>
+              <div class="textarea-container">
+                <textarea readonly name="observacion"
+                  placeholder="No hay observaciones cargadas. Puedes agregar una al editar los datos del cliente.">{{observacion}}</textarea>
+              </div>
+            </div>
+
+            <!--Fin Contenedor observación-->
+            <!--Fin Información-->
+            {{/each}}
+
+          </div>
+
+        </div><!--fin col-md-12 box-cajas-->
+
+      </div><!--fin row box-ind-->
+
+    </div><!--fin col-md-10-->
+
+  </div><!--fin row-->
+
+</div><!--fin container fluid-->

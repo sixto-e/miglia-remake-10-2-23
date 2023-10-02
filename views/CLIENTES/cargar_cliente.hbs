@@ -1,0 +1,140 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+
+        <div class="col-md-12 box-cajas">
+
+          <div class="container-fluid">
+
+            <div class="row mt-2 mb-2">
+              <div class="col-md-4">
+                <h4>Cargar cliente</h4>
+              </div>
+            </div>
+
+            <form class="form-group" action="/cargar-cliente/create" method="post">
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <label class="form-label" for="cuit">Cuit: </label>
+                  <input required class="form-control no-comma-dot" type="text" name="cuit" placeholder="Cuit (***)">
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label" for="razon_social">Razón social: </label>
+                  <input required class="form-control no-comma-dot" type="text" name="razon_social" placeholder="Razón social (***) ">
+                </div>
+
+                <div class="col-md-4">
+
+                  <label class="form-label" for="nombre_contacto">Contacto: </label>
+                  <input required class="form-control no-comma-dot" type="text" name="nombre_contacto" placeholder="Contacto (***) ">
+
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4 ">
+                  <label class="form-label" for="provincia">Provincia: </label>
+                  <select name="provincia" id="" class="form-control">
+                    {{#each prov}}
+                    <option value="{{id}}">{{prov_descrip}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label" for="localidad">Localidad: </label>
+                  <input required class="form-control no-comma-dot" type="text" name="localidad" placeholder="Localidad (***)">
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label" for="dirección">Dirección: </label>
+                  <input required class="form-control " type="text" name="direccion" placeholder="Dirección (***)">
+                </div>
+
+
+              </div>
+
+              <div class="row">
+
+
+                  <div class="col-md-4 mt-2">
+                    <label class="for-label" for="telefono">Teléfono: </label>
+                    <input required class="form-control " type="text" name="telefono" placeholder="Teléfono  (***)">
+                    <div class="alert alert-danger mt-2" role="alert">
+                      Ingresá el código de área sin 0 y el número de línea sin 15
+                    </div>
+                  </div>
+
+
+                <div class="col-md-4">
+                  <label class="form-label" for="mail">Mail: </label>
+                  <input required class="form-control" type="text" name="mail" placeholder="Mail">
+
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label" for="semaforo_comercial">Semáforo comercial: </label>
+                  <select class="form-control " name="semaforo_comercial" id="">
+                    {{#each semaf}}
+                      <option value="{{id}}">{{sem_descrip}}</option>
+                      {{/each}}
+                  </select>
+                </div>
+
+              </div>
+
+              <div class="textarea-container">
+                <textarea name="observacion" placeholder="Escribe aquí las observaciones"></textarea>
+              </div>
+
+              <div class="row">
+                <div class="col-md-3 mt-3 mb-3">
+                  <button type="submit" class="btn-sm btn btn-warning">Cargar</button>
+                </div>
+              </div>
+
+
+            </form>
+
+          </div><!--fin col-md-12 box-cajas-->
+
+        </div><!--fin row box-ind-->
+
+      </div><!--fin col-md-10-->
+
+    </div><!--fin row-->
+
+  </div><!--fin container fluid-->
+
+
+
+  <script>
+
+var noCommaDotInputs = document.querySelectorAll('.no-comma-dot');
+
+noCommaDotInputs.forEach(function(input) {
+    input.addEventListener('keydown', function(event) {
+        if (event.key === ',' || event.key === "-" || event.key === '.') {
+            event.preventDefault();
+        }
+    });
+});
+
+
+</script>

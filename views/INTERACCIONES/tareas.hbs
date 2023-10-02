@@ -1,0 +1,163 @@
+<div class="container-fluid" id="comienzo">
+
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+      <div class="row box-ind sinpadding">
+
+        <div class="col-md-12 box-cajas">
+
+          <div class="row mt-4 mb-3">
+
+            <div class="col-md-4">
+              <h2 style=" font-family: 'Open Sans', sans-serif; font-family: 'Quicksand', sans-serif;">
+                Tareas <i class='bx bx-star'></i></h2>
+            </div>
+
+
+            <div class="col-md-8 d-flex justify-content-end align-items-center">
+              <div class="dropdown">
+                <button  class="btn-sm btn btn-outline-dark dropdown-toggle filtro-inter" type="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Filtrar por responsable
+                </button>
+                <ul class="dropdown-menu">
+                  {{#each usuarios}}
+                  <li><a class="dropdown-item" href="/tareas/de-usuario-nro/{{id}}">{{nombre}}</a></li>
+                  {{/each}}
+                </ul>
+              </div>
+
+            </div>
+
+
+          </div>
+
+          {{#if tareas_remake}}
+
+          {{#each tareas_remake}}
+
+
+
+          <!--Contenedor info-->
+          <div class="container-fluid mt-2 mb-2">
+
+            <!--Icono documento-->
+            <div class="row p-2 fondo-color-gris-icono ">
+
+              <div class="col-md-12 d-flex justify-content-start align-items-center ">
+                <i class='bx bxs-file-archive' id="icono-inter-3"> </i>
+                <h6 style="display: inline-block;" class="m-2">Próximo cita:
+                  <strong>{{prox_encuentro}}</strong>
+                </h6>
+                <button class="{{estilo}}">{{estado_inter}}</button>
+              </div>
+
+            </div>
+            <!--Fin Icono documento-->
+
+            <!--Información-->
+            <div class="row mb-2 pb-3 pt-3" style="background-color: #d3d3d39a; border-bottom-left-radius: 10px; border-bottom-right-radius :10px;">
+              <!--1ra col-->
+              <div class="col-md-3">
+
+
+                Le interesa: <strong>{{interes}} </strong><br />
+
+                Tipo de m&aacute;quina: <strong>{{tipo}} {{estado}}</strong><br />
+
+                Reponsable: <strong>{{responsable}}</strong><br>
+
+                Día de la interacción: <strong>{{dia_de_interaccion}}</strong>
+
+              </div>
+              <!--Fin 1ra col-->
+
+              <!--2da col-->
+              <div class="col-md-3">
+                Raz&oacute;n Social: <strong>{{razon_social}} </strong><br />
+
+                Contacto: <strong>{{nombre_contacto}} </strong><br />
+
+                Cuit: <strong>{{cuit}}</strong><br />
+
+
+
+              </div>
+              <!--Fin 2da col-->
+
+              <!--3er col-->
+              <div class="col-md-3">
+                Localidad: <strong>{{localidad}}, {{direccion}}</strong><br />
+
+                mail: <strong>{{mail}}</strong> <br>
+
+                <div class="mt-1"></div>
+
+                Tel&eacute;fono:
+                <strong>
+                  {{telefono}}
+                  <a style="color: #fff; border-radius:5px" class="p-2  bg-danger btn-sm"
+                    href="tel:{{telefono}}"><i class='bx bx-xs bxs-phone-outgoing icono-llamada'></i></a>
+                </strong>
+                <div class="mb-3"></div>
+
+              </div>
+              <!--Fin 3er col-->
+
+
+              <!--4ta col-->
+              <div class="col-md-3 d-flex justify-content-end">
+                <div class="dropdown">
+                  <button  class="btn-sm btn btn-outline-dark dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Acciones
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/interaccion/{{id_interaccion}}">Ver</a></li>
+                    <li><a class="dropdown-item" href="/tareas/borrar/{{id_interaccion}}">Borrar</a></li>
+
+                  </ul>
+                </div>
+
+              </div>
+              <!--Fin 4ta col-->
+
+            </div>
+
+
+          </div>
+          {{/each}}
+
+
+
+          {{else}}
+
+          <div class="row mt-2">
+            <div class="col-md-4">
+              <div class="alert alert-success" role="alert">
+                No hay tareas !
+              </div>
+            </div>
+          </div>
+
+          {{/if}}
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

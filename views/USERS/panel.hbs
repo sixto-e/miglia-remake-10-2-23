@@ -1,0 +1,248 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      <div id="barra-cabecera">
+
+        <div id="barra-cabecera-lado-izq">
+          Escritorio
+          <br>
+          Tablero de estados y oportunidades
+        </div>
+
+        <div id="barra-cabecera-lado-der">
+          <div class="row">
+            <div class="d-flex justify-content-end align-items-center col-md-12">
+              <a href="/mi-perfil/{{user_id}}" class="btn btn-warning btn-sm"><i class='bx bxs-cog bx-flip-horizontal' style='color:#777474' ></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div><!--Fin Barra Cabecera -->
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+        <div class="col-md-12 box-cajas">
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <h4 class="d-flex justify-content-center align-items-center">Interacciones</h4>
+              <canvas id="myChart"></canvas>
+            </div>
+            <div class="col-md-8">
+              <h4 class=" d-flex justify-content-center align-items-center">Máquinas más buscadas</h4>
+              <canvas id="myChart03"></canvas>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-12">
+              <h4 class=" d-flex justify-content-center align-items-center">Maquinarias</h4>
+              <canvas id="myChart02"></canvas>
+            </div>
+
+          </div>
+
+
+
+
+        </div><!--fin col-md-12 box-cajas-->
+
+      </div><!--fin row box-ind-->
+
+    </div><!--fin col-md-10-->
+
+  </div><!--fin row-->
+
+  <div><!--fin container fluid-->
+
+    <style>
+      canvas {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+
+
+
+
+
+    <script>
+
+      const canvas = document.getElementById('myChart');
+      canvas.addEventListener('touchstart', function (e) {
+        e.preventDefault();
+      });
+
+
+      // Función para obtener los datos con Ajax
+      function obtenerCantidades() {
+        fetch('/obtener-cantidades')
+          .then(response => response.json())
+          .then(data => {
+            // Guardar los datos en variables separadas
+            const enCursoData = data.en_curso[0]["COUNT(*)"];
+            const pendienteData = data.pendiente[0]["COUNT(*)"];
+            const canceladasData = data.canceladas[0]["COUNT(*)"];
+            const concretadasData = data.concretadas[0]["COUNT(*)"];
+
+            // Crear un gráfico de barras
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+              type: 'doughnut',
+              data: {
+                labels: ['En Curso', 'Pendiente', 'Canceladas', 'Concretadas'],
+                datasets: [{
+                  label: 'Cantidad',
+                  data: [enCursoData, pendienteData, canceladasData, concretadasData],
+                  backgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',   // Azul para "En Curso"
+                    'rgba(255, 206, 86, 0.5)',  // Amarillo para "Pendiente"
+                    'rgba(255, 99, 132, 0.5)',  // Rojo para "Canceladas"
+                    'rgba(75, 192, 192, 0.5)'   // Verde para "Concretadas"
+                  ],
+                  borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                  ],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          })
+          .catch(error => {
+            console.error("Error:", error);
+          });
+      }
+
+      // Llamar a la función para obtener los datos y crear el gráfico al cargar la página
+      obtenerCantidades();
+
+
+
+
+      // Función para obtener los datos con Ajax
+      function obtener_cantidades_maquinarias() {
+        fetch('/obtener-cantidades/maquinaria')
+          .then(response => response.json())
+          .then(data => {
+            // Guardar los datos en variables separadas
+            const _0km_data = data.maq_ok[0]["COUNT(*)"];
+            const superv_data = data.maq_superv[0]["COUNT(*)"];
+            const buen_estado_data = data.maq_buen_est[0]["COUNT(*)"];
+            const regular_data = data.maq_reg[0]["COUNT(*)"];
+            const muy_buena_data = data.maq_muy_buena[0]["COUNT(*)"];
+
+            // Crear un gráfico de barras
+            const ctx = document.getElementById('myChart02').getContext('2d');
+            const myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['0km', 'Muy buena', 'Buen estado', 'Regular', 'A supervisar'],
+                datasets: [{
+                  label: 'Cantidad',
+                  data: [_0km_data, muy_buena_data, buen_estado_data, regular_data, superv_data],
+                  backgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 99, 50, 0.5)',
+                  ],
+                  borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                  ],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          })
+          .catch(error => {
+            console.error("Error:", error);
+          });
+      }
+
+      // Llamar a la función para obtener los datos y crear el gráfico al cargar la página
+      obtener_cantidades_maquinarias();
+
+
+
+
+
+      // Función para obtener los datos con Ajax
+      function obtener_cantidades_maquinarias_mas_buscadas() {
+        fetch('/obtener-cantidades/mas-interes-en')
+          .then(response => response.json())
+          .then(data => {
+            const maqIntMasBuscadas = data.maq_int_mas_buscadas;
+
+            // Extraer los tipos y cantidades de maquinarias
+            const tipos = maqIntMasBuscadas.map(item => item.tipo);
+            const cantidades = maqIntMasBuscadas.map(item => item.cantidad);
+
+            // Crear un gráfico de barras
+            const ctx = document.getElementById('myChart03').getContext('2d');
+            const myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: tipos, // Utilizar los tipos como etiquetas
+                datasets: [{
+                  label: 'Cantidad',
+                  data: cantidades, // Utilizar las cantidades correspondientes
+                  backgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    // Puedes agregar más colores aquí si es necesario
+                  ],
+                  borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    // Puedes agregar más colores aquí si es necesario
+                  ],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          })
+          .catch(error => {
+            console.error("Error:", error);
+          });
+      }
+
+      // Llamar a la función para obtener los datos y crear el gráfico al cargar la página
+      obtener_cantidades_maquinarias_mas_buscadas();
+
+    </script>

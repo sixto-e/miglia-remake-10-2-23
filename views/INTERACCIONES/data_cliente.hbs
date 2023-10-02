@@ -1,0 +1,349 @@
+{{#if data_cliente}}
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+
+        <div class="col-md-12 box-cajas">
+
+          <div class="container-fluid">
+
+            <div class="row mt-2 mb-2">
+              <div class="col-md-6">
+                <h4>Nueva interacción - Datos del cliente</h4>
+              </div>
+            </div>
+
+            <!-- BUSCARDOR DE CLIENTE -->
+            <div class="row mt-3 mb-3">
+              <form action="/cargar-nueva-interaccion/data-cliente" class="form-gruop" method="get">
+                <div class="row">
+                  <div class="col-md-5">
+                    <select name="id" class="form-control" id="clienteSelect">
+
+                      <option value="" disabled selected>- Seleccione un cliente</option>
+                      {{#each clientes}}
+                      <option value="{{id}}">{{nombre_contacto}} - {{cuit}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+
+                  <div class="col-md-2">
+                    <button type="submit" class="btn-sm btn btn-warning">Autocompletar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- FIN BUSCARDOR DE CLIENTE -->
+
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <a href="/cargar-nueva-interaccion/borrar-data-cliente" class="btn btn-sm"
+                  style="background-color: #333; color:#fff">Borrar autocomplado</a>
+              </div>
+            </div>
+
+            <!--CARGAR DATOS CLIENTES-->
+            <form class="form-group" action="/cargar-nueva-interaccion/data-cliente/create" method="post">
+              {{#each data_cliente}}
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <label class="form-label" for="cuit">Cuit: </label>
+                  <input disabled class="form-control no-comma-dot" type="text" name="cuit" value="{{cuit}}"
+                    placeholder="Cuit (***)">
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label" for="razon_social">Razón social: </label>
+                  <input disabled class="form-control no-comma-dot" type="text" value="{{razon_social}}"
+                    name="razon_social" placeholder="Razón social (***) ">
+                </div>
+
+                <div class="col-md-4">
+
+                  <label class="form-label" for="nombre_contacto">Contacto: </label>
+                  <input disabled class="form-control no-comma-dot" type="text" value="{{nombre_contacto}}"
+                    name="nombre_contacto" placeholder="Contacto (***) ">
+
+                </div>
+
+              </div>
+
+              {{/each}}
+
+              <div class="row">
+
+                <div class="col-md-4 ">
+                  <label class="form-label" for="provincia">Provincia: </label>
+                  <input disabled type="text" class="form-control" placeholder="provincia" value="{{provincia_cliente.[0].prov_descrip}}">
+                </div>
+
+                {{#each data_cliente}}
+
+                <div class="col-md-4">
+                  <label class="form-label" for="localidad">Localidad: </label>
+                  <input disabled class="form-control no-comma-dot" type="text" value="{{localidad}}" name="localidad"
+                    placeholder="Localidad (***)">
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label" for="dirección">Dirección: </label>
+                  <input disabled class="form-control " type="text" value="{{direccion}}" name="direccion"
+                    placeholder="Dirección (***)">
+                </div>
+
+                {{/each}}
+              </div>
+
+              <div class="row">
+
+                {{#each data_cliente}}
+                <div class="col-md-4">
+                  <label class="form-label" for="telefono">Teléfono: </label>
+                  <input disabled class="form-control " type="text" value="{{telefono}}" name="telefono"
+                    placeholder="Teléfono  (***)">
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label" for="mail">Mail: </label>
+                  <input disabled class="form-control" type="text" value="{{mail}}" name="mail" placeholder="Mail">
+                </div>
+
+                {{/each}}
+
+                <div class="col-md-4">
+                  <label class="form-label" for="semaforo_comercial">Semáforo comercial: </label>
+                  <input disabled type="text" class="form-control" value="{{semaforo_descripcion.[0].sem_descrip}}">
+                </div>
+
+              </div>
+
+              <div class="textarea-container">
+                {{#each data_cliente}}
+                <textarea disabled  name="observacion"
+                  placeholder="No hay observaciones cargadas. Puedes agregar una al editar los datos del cliente.">{{observacion}}</textarea>
+                {{/each}}
+              </div>
+
+              <div class="row">
+                <div class="col-md-3 mt-3 mb-3">
+                  <button type="submit" class="btn-sm btn btn-warning">Siguiente</button>
+                </div>
+              </div>
+
+
+            </form>
+            <!--FIN CARGAR DATOS CLIENTES -->
+
+
+          </div><!--fin col-md-12 box-cajas-->
+
+        </div><!--fin row box-ind-->
+
+      </div><!--fin col-md-10-->
+
+    </div><!--fin row-->
+
+  </div><!--fin container fluid-->
+  {{else}}
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-2 sinpadding">
+         {{> lateralBeta}}
+      </div>
+      <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+      <div class="col-md-10 sinpadding">
+
+        {{> cabeceraBeta}}<!--cabecera-->
+
+
+        <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+
+          <div class="col-md-12 box-cajas">
+
+            <div class="container-fluid">
+
+              <div class="row mt-2 mb-2">
+                <div class="col-md-6">
+                  <h4>Nueva interacción - Datos del cliente</h4>
+                </div>
+              </div>
+
+              <!-- BUSCARDOR DE CLIENTE -->
+              <div class="row mt-2 mb-5">
+
+                <form action="/cargar-nueva-interaccion/data-cliente" class="form-gruop" method="get">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <select name="id" class="form-control" id="clienteSelect">
+
+                        <option value="" disabled selected>- Seleccione un cliente</option>
+                        {{#each clientes}}
+                        <option value="{{id}}">{{nombre_contacto}} - {{cuit}}</option>
+                        {{/each}}
+                      </select>
+                    </div>
+
+                    <div class="col-md-2">
+                      <button type="submit" class="btn-sm btn-sm btn btn-warning filtro-inter">Autocompletar</button>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+              <!-- FIN BUSCARDOR DE CLIENTE -->
+
+
+
+              <!--CARGAR DATOS CLIENTES-->
+              <form class="form-group" action="/cargar-nueva-interaccion/data-cliente/create" method="post">
+
+
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="cuit">Cuit: </label>
+                    <input required class="form-control no-comma-dot" type="text" name="cuit"
+                      placeholder="Cuit (***) - Sin puntos, comas ni guiones">
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="razon_social">Razón social: </label>
+                    <input required class="form-control no-comma-dot" type="text" name="razon_social"
+                      placeholder="Razón social (***) ">
+                  </div>
+
+                  <div class="col-md-4">
+
+                    <label class="form-label" for="nombre_contacto">Contacto: </label>
+                    <input required class="form-control no-comma-dot" type="text" name="nombre_contacto"
+                      placeholder="Contacto (***) ">
+
+                  </div>
+
+                </div>
+
+
+
+                <div class="row">
+
+                  <div class="col-md-4 ">
+                    <label class="form-label" for="provincia">Provincia: </label>
+                    <select class="form-control" name="provincia" id="">
+                      {{#each prov}}
+                      <option value="{{id}}">{{prov_descrip}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+
+
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="localidad">Localidad: </label>
+                    <input required class="form-control no-comma-dot" type="text" name="localidad" placeholder="Localidad (***)">
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="dirección">Dirección: </label>
+                    <input required class="form-control " type="text" name="direccion" placeholder="Dirección (***)">
+                  </div>
+
+
+                </div>
+
+                <div class="row">
+
+
+                  <div class="col-md-4 mt-2">
+                    <label class="for-label" for="telefono">Teléfono: </label>
+                    <input required class="form-control " type="text" name="telefono" placeholder="Teléfono  (***)">
+                    <div class="alert alert-danger mt-2" role="alert">
+                      Ingresá el código de área sin 0 y el número de línea sin 15
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="mail">Mail: </label>
+                    <input  class="form-control" type="text" name="mail" placeholder="Mail">
+                  </div>
+
+
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="semaforo_comercial">Semáforo comercial: </label>
+                    <select class="form-control" name="semaforo_comercial" id="">
+                      {{#each sem}}
+                      <option value="{{id}}">{{sem_descrip}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+
+                </div>
+
+                <div class="textarea-container">
+
+                  <textarea name="observacion" placeholder="Escribe aquí las observaciones sobre el cliente."></textarea>
+
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3 mt-3 mb-3">
+                    <button type="submit" class="btn-sm btn btn-warning">Siguiente</button>
+                  </div>
+                </div>
+
+
+              </form>
+              <!--FIN CARGAR DATOS CLIENTES -->
+
+
+            </div><!--fin col-md-12 box-cajas-->
+
+          </div><!--fin row box-ind-->
+
+        </div><!--fin col-md-10-->
+
+      </div><!--fin row-->
+
+    </div><!--fin container fluid-->
+    {{/if}}
+
+
+    <script>
+
+      var noCommaDotInputs = document.querySelectorAll('.no-comma-dot');
+
+      noCommaDotInputs.forEach(function (input) {
+        input.addEventListener('keydown', function (event) {
+          if (event.key === ',' || event.key === "-" || event.key === '.') {
+            event.preventDefault();
+          }
+        });
+      });
+
+
+      document.getElementById('clienteSelect').addEventListener('change', function () {
+        var select = this;
+        var selectedOption = select.options[select.selectedIndex];
+
+        if (selectedOption.value !== '') {
+          select.options[0].disabled = true;
+        } else {
+          select.options[0].disabled = false;
+        }
+      });
+    </script>

@@ -1,0 +1,222 @@
+{{#if estado}}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+        <div class="col-md-12 box-cajas">
+
+          <div class="row mt-2">
+
+            <div class="col-md-4">
+              <h4>Maquinarias <i class='bx bx-check'></i></h4>
+            </div>
+
+            <div class="col-md-8 d-flex aling-items-center justify-content-end p-3 opc-inter">
+
+              <a class="btn-sm btn btn-warning" href="/cargar-nueva-maquinaria"> Agregar </a>
+
+              <div style="margin-left: 10px;"></div>
+
+              <a class="btn btn-sm btn-outline-dark filtro-inter" href="/maquinarias/borradas"><i
+                  class="fa-solid fa-rectangle-list"></i>
+                Ver no activas</a>
+
+            </div>
+
+
+          </div>
+
+          <!-- template.hbs -->
+          <div class="container-fluid">
+            <div class="row">
+              {{#each datos}}
+              <div class="col-md-4 mb-3">
+                <div class="card">
+
+
+                  <img src="{{public_url}}" class="img-fluid" width="600" height="400" alt="No hay imagen cargada">
+
+
+                  <div class="card-body">
+                    <button class="{{estilo}}">{{estado}}</button>
+                    <h5 class="card-title">{{tipo}}</h5>
+
+                    <p class="card-text" style="height: 110px;">
+                      <span style="color: green;">{{modelo}}</span>
+                      <br>
+                      {{modalidad}}
+                      <br>
+                      {{disponibilidad}}
+                      <br>
+                      <strong>$ {{precio}}</strong>
+                    </p>
+
+
+                    <div class="dropdown">
+                      <button class="btn-sm btn btn-outline-dark dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Acciones
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/maquinaria/{{id_maquinaria}}">Ver</a></li>
+                        <li><a class="dropdown-item" href="#"></a></li>
+                        <li><a class="dropdown-item" href="/cargar-foto-destacada/{{id_maquinaria}}">Establecer foto</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#"></a></li>
+                        <li><a class="dropdown-item" href="/crear-galeria/{{id_maquinaria}}">Crear galería</a></li>
+                        <li><a class="dropdown-item" href="#"></a></li>
+                        <li><a class="dropdown-item" href="/maquinaria/borrar/{{id_maquinaria}}">Borrar</a></li>
+
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+
+        </div><!--fin col-md-12 box-cajas-->
+
+      </div><!--fin row box-ind-->
+
+    </div><!--fin col-md-10-->
+
+  </div><!--fin row-->
+
+
+  <div><!--fin container fluid-->
+
+
+    {{else}}
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 sinpadding">
+          {{> lateralBeta}}
+        </div>
+        <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+        <div class="col-md-10 sinpadding">
+
+          {{> cabeceraBeta}}<!--cabecera-->
+
+          <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+            <div class="col-md-12 box-cajas">
+
+              <div class="row mt-2 ">
+
+                <div class="col-md-6">
+                  <h4>Maquinarias no activas</h4>
+                </div>
+
+                <div class="col-md-6 d-flex aling-items-center justify-content-end p-3">
+
+                  <a class="btn btn-sm btn-outline-dark " href="/maquinarias"><i class="fa-solid fa-rectangle-list"></i>
+                    Ver
+                    activas</a>
+
+                </div>
+
+              </div>
+              <!--Listado de maquinarias activas-->
+              {{#if maquinarias_borradas}}
+              {{#each maquinarias_borradas}}
+              <div class="container-fluid espacio-bloque">
+                <div class="row">
+                  <div class="col-md-1 fondo-color-rojo-icono  d-flex justify-content-center align-items-center">
+                    <img src="/images/engranaje.jpg" width="30px" height="30px" class="img-fluid" alt="">
+                  </div>
+                  <div class="col-md-11 fondo-color-gris-contenido">
+                    <div class="row">
+
+                      <div class="col-md-4 propiedad-columna-bloque-txt">
+                        <div>
+                          <button class="{{estilo}}">{{estado}}</button>
+                          <br>
+                          <strong>Tipo:</strong> {{tipo}}
+                        </div>
+                        <div>
+                          <strong>Modelo y marca:</strong> {{modelo}}
+                        </div>
+                        <div>
+                          <strong>Modalidad:</strong> {{modalidad}}
+                        </div>
+
+
+
+                      </div>
+
+                      <div class="col-md-4 propiedad-columna-bloque-txt">
+                        <br>
+                        <div>
+                          <strong>Disponibilidad:</strong> {{disponibilidad}}
+                        </div>
+
+                        <div>
+                          <strong>Precio:</strong> ${{precio}}
+                        </div>
+
+                        <div>
+                          <strong>Agragada:</strong> ${{fecha_de_creacion}}
+                        </div>
+
+
+                      </div>
+
+                      <div class="col-md-4 propiedad-columna-bloque-boton">
+                        <div class="dropdown">
+                          <button class="btn btn-sm btn-outline-dark dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Acciones
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/maquinaria/borrada/{{id_maquinaria}}">Ver</a></li>
+                            <li><a class="dropdown-item" href="#"></a></li>
+                            <li><a class="dropdown-item" href="/maquinaria/habilitar/{{id_maquinaria}}">Activar</a></li>
+
+                          </ul>
+                        </div>
+                      </div><!--Findde Col md3 -->
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+
+              {{else}}
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="alert alert-secondary" role="alert">
+                    No hay maquinaria borrada !
+                  </div>
+                </div>
+              </div>
+
+              {{/if}}
+
+
+            </div><!--fin col-md-12 box-cajas-->
+
+          </div><!--fin row box-ind-->
+
+        </div><!--fin col-md-10-->
+
+      </div><!--fin row-->
+
+
+      <div><!--fin container fluid-->
+
+        {{/if}}

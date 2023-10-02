@@ -1,0 +1,136 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+        <div class="col-md-12 box-cajas">
+
+          <div class="row mt-2 mb-2">
+            <div class="col-md-4">
+              <h4>Editar usuario</h4>
+            </div>
+          </div>
+          {{#each datos_usuario}}
+          <form class="form-group" action="/editar-usuario/{{id}}/create" method="post">
+            {{/each}}
+            <div class="row">
+
+              <div class="col-md-3">
+                <label for="nombre">Nombre de usuario</label>
+                {{#each datos_usuario}}
+                <input required class="form-control move" type="text" name="nombre" value="{{nombre}}"
+                  placeholder="Nombre de usuario">
+                {{/each}}
+              </div>
+
+              <div class="col-md-3">
+                <label for="rol"> Rol del usuario </label>
+                <select class="form-control move" name="rol">
+
+                   
+                  <option value="{{rol_data.id_tipo}}" selected>{{rol_data.t_descrip}}</option>
+                 
+
+
+                  {{#each tipos_usuarios}}
+                  <option value="{{id_tipo}}">{{t_descrip}}</option>
+                  {{/each}}
+
+                </select>
+              </div>
+
+              <div class="col-md-3">
+                <label for="perfil">Perfil de usuario</label>
+                <select class="form-control move" name="perfil">
+
+               
+                  <option value="{{perfil_data.id_perfil}}">{{perfil_data.p_descrip}}</option>
+                  
+
+                  {{#each perfiles}}
+                  <option value="{{id_perfil}}">{{p_descrip}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+
+
+              <div class="col-md-3">
+                <label for="Zona Comercial">Zona Comercial</label>
+                <select class="form-control move" name="zona_comercial">
+
+                 
+                  <option value="{{zona_comercial_data.id_zona}}" selected>{{zona_comercial_data.z_descrip}}</option>
+            
+
+                  {{#each zonas_comerciales}}
+                  <option value="{{id_zona}}">{{z_descrip}}</option>
+                  {{/each}}
+
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-3">
+                <label for="teléfono">Teléfono</label>
+                {{#each datos_usuario}}
+                <input required class="form-control move" type="text" name="telefono" value="{{telefono}}"
+                  placeholder="Teléfono">
+                {{/each}}
+              </div>
+
+              <div class="col-md-3">
+                <label for="mail">Correo electrónico </label>
+                {{#each datos_usuario}}
+                <input required class="form-control move" type="email" value="{{mail}}" name="mail"
+                  placeholder="Correo electrónico">
+                {{/each}}
+              </div>
+
+              <div class="col-md-3">
+                <label for="ubicación">Ubicación</label>
+                {{#each datos_usuario}}
+                <input required class="form-control move" type="text" name="ubicacion" value="{{ubicacion}}"
+                  placeholder="Ubicación">
+                {{/each}}
+              </div>
+
+
+            </div>
+
+
+            <div class="textarea-container">
+              {{#each datos_usuario}}
+              <textarea name="observacion" value="{{observaciones}}"
+                placeholder="Escribe aquí las observaciones"></textarea>
+              {{/each}}
+            </div>
+
+            <div class="row">
+              <div class="col-md-3 mt-3 mb-3">
+                <button class="btn-sm btn btn-warning" type="submit">Aplicar cambios</button>
+              </div>
+            </div>
+
+
+          </form>
+
+        </div><!--fin col-md-12 box-cajas-->
+
+      </div><!--fin row box-ind-->
+
+    </div><!--fin col-md-10-->
+
+  </div><!--fin row-->
+
+
+  <div><!--fin container fluid-->

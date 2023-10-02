@@ -1,0 +1,266 @@
+{{#if estado}}
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+      <div class="row box-ind sinpadding">
+
+        <div class="col-md-12 box-cajas">
+
+          <div class="row">
+            <div class="col-md-4 mt-2">
+              <h4>Clientes <i class='bx bx-check'></i></h4>
+            </div>
+
+            <div class="col-md-8 d-flex aling-items-center justify-content-end p-3 opc-inter">
+              <a class="btn-sm  btn btn-warning" href="/cargar-cliente"> Agregar </a>
+
+              <div style="margin-left: 10px;"></div>
+
+              <a class="btn-sm btn btn-outline-dark filtro-inter" href="/buscar-cliente"> <i
+                  class="fa-solid fa-magnifying-glass"></i> Buscar</a>
+                  
+              <div style="margin-left: 10px;"></div>
+
+              <a class="btn btn-sm btn-outline-dark " href="/clientes/borrados"> <i
+                  class="fa-solid fa-rectangle-list"></i> Ver
+                borrados</a>
+
+            </div>
+
+          </div>
+
+          {{#if clientes}}
+
+          {{#each clientes}}
+
+          <div class="container-fluid espacio-bloque">
+            <div class="row">
+              <div class="col-md-1 fondo-color-verde-icono d-flex align-items-center justify-content-center">
+                <i class='bx-md bx bxs-id-card'></i>
+              </div>
+              <div class="col-md-11 fondo-color-gris-contenido">
+                <div class="row">
+                  <div class="col-md-4">
+
+                    <div>
+                      Razón social: <strong>{{razon_social}} </strong>
+                    </div>
+
+                    <div>
+                      Contacto: <strong>{{nombre_contacto}}</strong>
+                    </div>
+
+                    <div>
+                      Cuit: <strong>{{cuit}}</strong>
+                    </div>
+
+                    <div>
+                      Teléfono: <strong>{{telefono}}</strong>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-4">
+                    <div>
+                      Semáforo comercial: <strong> {{sem_descrip}} </strong>
+                    </div>
+
+                    <div>
+                      Localidad:<strong> {{localidad}} </strong>
+                    </div>
+
+                    <div>
+                      Provincia: <strong> {{prov_descrip}} </strong>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-4 propiedad-columna-bloque-boton">
+
+                    <div class="dropdown">
+                      <button class="btn-sm btn-outline-dark btn  dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Acciones
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/cliente/{{id}}">Ver</a></li>
+                        <li><a class="dropdown-item" href="#"></a></li>
+                        <li><a class="dropdown-item" href="/cliente/borrar/{{id}}">Borrar</a></li>
+
+                      </ul>
+                    </div>
+                  </div><!--Findde Col md3 -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+
+          {{else}}
+
+          <div class="row mt-2">
+            <div class="col-md-4">
+              <div class="alert alert-success" role="alert">
+                No hay clientes activos o cargados !
+              </div>
+            </div>
+          </div>
+
+          {{/if}}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{{else}}
+
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+      <div class="row box-ind sinpadding">
+
+        <div class="col-md-12 box-cajas">
+
+          <div class="row">
+            <div class="col-md-4 mt-2 ">
+              <h4>Clientes no activos</h4>
+            </div>
+
+            <div class="col-md-8 d-flex aling-items-center justify-content-end p-3 opc-inter">
+
+              <a class="btn btn-sm btn-outline-dark filtro-inter" href="/buscar-cliente">
+                <i class="fa-solid fa-magnifying-glass"></i> Buscar </a>
+
+              <div style="margin-left: 10px;"></div>
+
+              <a class="btn btn-sm btn-outline-dark" href="/clientes">
+                <i class="fa-solid fa-rectangle-list"></i>
+                Ver activos</a>
+
+            </div>
+
+
+          </div>
+
+
+
+          {{#if clientes_borrados}}
+
+
+          {{#each clientes_borrados}}
+
+          <div class="container-fluid espacio-bloque">
+            <div class="row">
+              <div class="col-md-1 fondo-color-rojo-icono d-flex align-items-center justify-content-center">
+                <i class='bx bx-md bxs-id-card'></i>
+              </div>
+              <div class="col-md-11 fondo-color-gris-contenido">
+                <div class="row">
+                  <div class="col-md-4">
+
+                    <div>
+                      Razón social: <strong>{{razon_social}} </strong>
+                    </div>
+
+                    <div>
+                      Contacto: <strong>{{nombre_contacto}}</strong>
+                    </div>
+
+                    <div>
+                      Cuit: <strong>{{cuit}}</strong>
+                    </div>
+
+                    <div>
+                      Teléfono: <strong>{{telefono}}</strong>
+                    </div>
+
+
+                  </div>
+
+                  <div class="col-md-4">
+
+                    <div>
+                      Semáforo comercial: <strong>{{sem_descrip}}</strong>
+                    </div>
+
+                    <div>
+                      Localidad: <strong>{{localidad}}</strong>
+                    </div>
+
+                    <div>
+                      Provincia: <strong>{{prov_descrip}}</strong>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-4  propiedad-columna-bloque-boton">
+                    <div class="dropdown">
+                      <button class="btn-sm btn btn-outline-dark dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Acciones
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/cliente/borrado/{{id}}">Ver</a></li>
+                        <li><a class="dropdown-item" href="#"></a></li>
+                        <li><a class="dropdown-item" href="/cliente/habilitar/{{id}}">Activar</a></li>
+
+                      </ul>
+                    </div>
+                  </div><!--Findde Col md3 -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+
+          {{else}}
+
+          <div class="row mt-2">
+            <div class="col-md-4">
+              <div class="alert alert-success" role="alert">
+                No hay clientes borrados !
+              </div>
+            </div>
+          </div>
+
+          {{/if}}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{{/if}}

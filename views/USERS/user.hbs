@@ -1,0 +1,180 @@
+{{#if estado}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 sinpadding">
+            {{> lateralBeta}}
+        </div>
+        <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+        <div class="col-md-10 sinpadding">
+
+            {{> cabeceraBeta}}<!--cabecera-->
+
+            <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+                <div class="col-md-12 box-cajas">
+                    <div class="mt-2"></div>
+
+                    <div class="row">
+                        <div class="dropdown  d-flex justify-content-start">
+                            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Gestionar roles
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                {{#each data_de_usuario_single}}
+                                <li><a class="dropdown-item" href="/usuario/{{id}}/conver-admin">Convertir a admin</a>
+                                </li>
+                                <li><a class="dropdown-item" href="/usuario/{{id}}/conver-editor">Convertir a editor</a></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2 mb-2">
+                        <div class="col-md-4">
+                            <h4>{{#each data_de_usuario_single}}{{nombre}} {{/each}} <button
+                                    class="btn btn-success btn-sm">Activo</button></h4>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        {{#each data_de_usuario_single}}
+                        <div class="col-md-3"> <i class=' bx bx-md bxs-hard-hat'></i>
+                            <p>{{p_descrip}}</p>
+                        </div>
+                        {{/each}}
+                    </div>
+
+                    <div class="row">
+
+                        {{#each data_de_usuario_single}}
+                        <div class="col-md-3"> <i class='bx  bx-md bx-home-alt-2'></i>
+                            <p> Ubicado en
+                                {{ubicacion}} {{z_descrip}} </p>
+                        </div>
+                        {{/each}}
+
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-3">
+                            {{#each data_de_usuario_single}}
+                            <i class='bx bx-md bxs-contact'></i>
+                            <p> {{telefono}} | {{mail}}</p>
+                            {{/each}}
+                        </div>
+                    </div>
+
+
+
+
+
+                </div><!--fin col-md-12 box-cajas-->
+
+            </div><!--fin row box-ind-->
+
+        </div><!--fin col-md-10-->
+
+    </div><!--fin row-->
+
+
+    <div><!--fin container fluid-->
+
+        {{else}}
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 sinpadding">
+                    {{> lateralBeta}}
+                </div>
+                <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+                <div class="col-md-10 sinpadding">
+
+                    {{> cabeceraBeta}}<!--cabecera-->
+
+                    <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+                        <div class="col-md-12 box-cajas">
+
+
+                            <div class="row mt-2 mb-2">
+                                <div class="col-md-4">
+                                    <h4>{{#each data_de_usuario_single}}{{nombre}} {{/each}} <button
+                                            class="btn btn-danger btn-sm">No activo</button></h4>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                {{#each data_de_usuario_single}}
+                                <div class="col-md-3"> <i class=' bx bx-md bxs-hard-hat'></i>
+                                    <p>{{p_descrip}}</p>
+                                </div>
+                                {{/each}}
+                            </div>
+
+                            <div class="row">
+
+                                {{#each data_de_usuario_single}}
+                                <div class="col-md-3"> <i class='bx  bx-md bx-home-alt-2'></i>
+                                    <p> Ubicado en
+                                        {{ubicacion}} {{z_descrip}} </p>
+                                </div>
+                                {{/each}}
+
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-md-3">
+                                    {{#each data_de_usuario_single}}
+                                    <i class='bx bx-md bxs-contact'></i>
+                                    <p> {{telefono}} | {{mail}}</p>
+                                    {{/each}}
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div><!--fin col-md-12 box-cajas-->
+
+                    </div><!--fin row box-ind-->
+
+                </div><!--fin col-md-10-->
+
+            </div><!--fin row-->
+
+
+            <div><!--fin container fluid-->
+
+                {{/if}}
+
+                <!--
+    data_de_usuario_single:  [
+  RowDataPacket {
+    id: 1,
+    nombre: 'sixtocabrera',
+    telefono: '3465442615',
+    mail: 'six_cabre@outlook.com',
+    ubicacion: 'Firmat',
+    t_descrip: 'Admin',
+    z_descrip: 'Zona sur',
+    p_descrip: 'Servicio mecánico'
+  }
+
+]
+
+
+              <div class="row">
+                        <p style="font-size: 22px;">{{p_descrip}} {{ubicacion}} {{z_descrip}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="font-size: 22px;">{{telefono}} {{mail}} {{t_descrip}}</p>
+                    </div>
+
+
+
+
+  -->

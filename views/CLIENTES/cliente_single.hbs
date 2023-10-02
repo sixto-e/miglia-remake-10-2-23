@@ -1,0 +1,301 @@
+{{#if estado}}
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}
+
+      <div class="row box-ind sinpadding">
+
+        <div class="col-md-12 box-cajas">
+
+          <div class="container-fluid">
+
+
+            <div class="row mt-2 mb-2">
+              <div class="col-md-3">
+
+                <button class="btn btn-warning btn-sm" id="btn-editar"> <i
+                  class='bx bxs-edit-alt'></i> Editar</button>
+
+              </div>
+            </div>
+
+            <div class="row mt-2 mb-2">
+              <div class="col-md-3">
+
+                <button class="btn btn-danger btn-sm" id="btn-cancelar-editor">Salir de edición</button>
+
+              </div>
+            </div>
+
+            <div class="row mt-2 mb-2">
+              <div class="col-md-4">
+                {{#each datos}}
+                <h4>{{razon_social}} <button class="btn btn-success btn-sm">Activo</button></h4>
+                {{/each}}
+              </div>
+            </div>
+
+
+            {{#each datos}}
+        
+            <form action="/cliente/{{id}}/create" class="form-group" method="post">
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <label class="form-label" for="cuit">Cuit: </label>
+                  <input class="form-control muted no-comma-dot"  type="text" name="cuit" value="{{cuit}}"
+                    placeholder="Cuit (***)">
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label" for="razon_social">Razón social: </label>
+                  <input class="form-control muted no-comma-dot"  type="text" name="razon_social"
+                    value="{{razon_social}}" placeholder="Razón social (***) ">
+                </div>
+
+                <div class="col-md-4">
+
+                  <label class="form-label" for="nombre_contacto">Contacto: </label>
+                  <input class="form-control muted no-comma-dot"  type="text" name="nombre_contacto"
+                    value="{{nombre_contacto}}" placeholder="Contacto (***) ">
+
+                </div>
+
+              </div>
+
+              {{/each}}
+
+              <div class="row">
+
+                <div class="col-md-4 ">
+                  <label class="form-label" for="provincia">Provincia: </label>
+                  <select name="provincia" id=""  class="form-control muted">
+
+
+                    <option value="{{prov.id_prov}}" selected>{{prov.prov_descrip}}
+                    </option>
+
+
+                    {{#each provincias}}
+                    <option value="{{id}}">{{prov_descrip}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+                {{#each datos}}
+
+                <div class="col-md-4">
+                  <label class="form-label" for="localidad">Localidad: </label>
+                  <input class="form-control muted no-comma-dot"  type="text" name="localidad" value="{{localidad}}"
+                    placeholder="Localidad (***)">
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label" for="dirección">Dirección: </label>
+                  <input class="form-control muted "  type="text" name="direccion" value="{{direccion}}"
+                    placeholder="Dirección (***)">
+                </div>
+
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <label for="telefono">Teléfono: </label>
+                  <input class="form-control muted "  type="text" name="telefono" value="{{telefono}}"
+                    placeholder="Teléfono  (***)">
+
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label" for="mail">Mail: </label>
+                  <input class="form-control muted"  type="text" name="mail" value="{{mail}}" placeholder="Mail">
+
+                </div>
+
+                {{/each}}
+
+                <div class="col-md-4">
+                  <label class="form-label" for="semaforo_comercial">Semáforo comercial: </label>
+                  <select class="form-control muted "  name="semaforo_comercial" id="">
+                    <option value="{{semaforo_c.id}}" selected>{{semaforo_c.sem_descrip}}</option>
+                    {{#each semafs}}
+                    <option value="{{id}}">{{sem_descrip}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+
+              </div>
+
+              <div class="textarea-container ">
+                <textarea name="observacion"  class="muted" placeholder="Escribe aquí las observaciones"></textarea>
+              </div>
+
+              <div class="row">
+                <div class="col-md-3 mt-3 mb-3">
+                  <button type="submit" class="btn-sm btn btn-warning" id="btn-save">Aplicar cambios</button>
+                </div>
+              </div>
+
+
+            </form>
+
+          </div><!--fin col-md-12 box-cajas-->
+
+        </div><!--fin row box-ind-->
+
+      </div><!--fin col-md-10-->
+
+    </div><!--fin row-->
+
+  </div><!--fin container fluid-->
+
+  {{else}}
+  <div class="container-fluid">
+
+    <div class="row">
+
+      <div class="col-md-2 sinpadding">
+        {{> lateralBeta}}
+      </div>
+
+      <div class="col-md-10 sinpadding">
+
+        {{> cabeceraBeta}}
+
+        <div class="row box-ind sinpadding">
+
+          <div class="col-md-12 box-cajas">
+
+            <div class="container-fluid">
+
+              <div class="row mt-2 mb-2">
+                <div class="col-md-4">
+                  {{#each datos}}
+                  <h4>{{razon_social}} <button class="btn btn-danger btn-sm">No activo</button></h4>
+                  {{/each}}
+                </div>
+              </div>
+
+
+              {{#each datos}}
+              <form class="form-group" action="/cliente/{{id}}/create" method="post">
+
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="cuit">Cuit: </label>
+                    <input class="form-control muted no-comma-dot" disabled type="text" name="cuit" value="{{cuit}}"
+                      placeholder="Cuit (***)">
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="razon_social">Razón social: </label>
+                    <input class="form-control muted no-comma-dot" disabled type="text" name="razon_social"
+                      value="{{razon_social}}" placeholder="Razón social (***) ">
+                  </div>
+
+                  <div class="col-md-4">
+
+                    <label class="form-label" for="nombre_contacto">Contacto: </label>
+                    <input class="form-control muted no-comma-dot" disabled type="text" name="nombre_contacto"
+                      value="{{nombre_contacto}}" placeholder="Contacto (***) ">
+
+                  </div>
+
+                </div>
+
+                {{/each}}
+
+                <div class="row">
+
+                  <div class="col-md-4 ">
+                    <label class="form-label" for="provincia">Provincia: </label>
+                    <select name="provincia" id="" disabled class="form-control muted">
+
+
+                      <option value="{{prov.id_prov}}" selected>{{prov.prov_descrip}}
+                      </option>
+
+
+                      {{#each provincias}}
+                      <option value="{{id}}">{{prov_descrip}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                  {{#each datos}}
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="localidad">Localidad: </label>
+                    <input class="form-control muted no-comma-dot"  disabled type="text" name="localidad" value="{{localidad}}"
+                      placeholder="Localidad (***)">
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="dirección">Dirección: </label>
+                    <input class="form-control muted "  disabled type="text" name="direccion" value="{{direccion}}"
+                      placeholder="Dirección (***)">
+                  </div>
+
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <label for="telefono">Teléfono: </label>
+                    <input class="form-control muted "  disabled type="text" name="telefono" value="{{telefono}}"
+                      placeholder="Teléfono  (***)">
+
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="mail">Mail: </label>
+                    <input class="form-control muted"  disabled type="text" name="mail" value="{{mail}}" placeholder="Mail">
+
+                  </div>
+
+                  {{/each}}
+
+                  <div class="col-md-4">
+                    <label class="form-label" for="semaforo_comercial">Semáforo comercial: </label>
+                    <select class="form-control muted " disabled name="semaforo_comercial" id="">
+                      <option value="{{semaforo_c.id}}" selected>{{semaforo_c.sem_descrip}}</option>
+                      {{#each semafs}}
+                      <option value="{{id}}">{{sem_descrip}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+
+                </div>
+
+                <div class="textarea-container ">
+                  <textarea name="observacion" disabled class="muted" placeholder="Escribe aquí las observaciones"></textarea>
+                </div>
+
+     
+              
+            </div><!--fin col-md-12 box-cajas-->
+
+          </div><!--fin row box-ind-->
+
+        </div><!--fin col-md-10-->
+
+      </div><!--fin row-->
+
+    </div><!--fin container fluid-->
+
+
+    {{/if}}
+
+
+<script src="/js/editar-cliente.js"></script>

@@ -1,0 +1,147 @@
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+
+        <div class="col-md-12 box-cajas">
+
+          <div class="row">
+            <div class="col-md-3 mt-3 mb-3">
+              <div class="dropdown">
+                <button style="background-color:#252525; color:#fff" class="btn dropdown-toggle" type="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Filtrar por estado
+                </button>
+                <ul class="dropdown-menu">
+                  {{#each estados_interacciones}}
+                  <li><a class="dropdown-item" href="/interacciones/{{id}}">{{descrip}}</a></li>
+                  {{/each}}
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+          {{#if interacciones_basadas_en_estado_remake}}
+          <!--Contenedor info-->
+          <div class="container-fluid  mb-2">
+            {{#each interacciones_basadas_en_estado_remake}}
+
+            <!--Icono documento-->
+            <div class="row p-2 mt-2  mb-2 fondo-color-gris-icono">
+
+              <div class="col-md-12 d-flex justify-content-start align-items-center ">
+                <i style="color:{{estilo}}" class='bx bxs-file-archive'> </i>
+                <h6 style="display: inline-block; border-radius:10px" class="m-2 {{estilo}} p-2">{{estado_inter}}:
+                  {{razon_social}} - <strong>{{prox_encuentro}}</strong> </h6>
+              </div>
+
+            </div>
+            <!--Fin Icono documento-->
+
+            <!--Información-->
+            <div class="row">
+              <!--1ra col-->
+              <div class="col-md-3">
+
+                Le interesa: <strong>{{interes}} </strong><br />
+
+                Tipo de m&aacute;quina: <strong>{{tipo}} {{estado}}</strong><br />
+
+                Reponsable: <strong>{{responsable}}</strong>
+
+              </div>
+              <!--Fin 1ra col-->
+
+              <!--2da col-->
+              <div class="col-md-3">
+                Raz&oacute;n Social: <strong>{{razon_social}} </strong><br />
+
+                Contacto: <strong>{{nombre_contacto}} </strong><br />
+
+                Cuit: <strong>20422042311</strong><br />
+
+              </div>
+              <!--Fin 2da col-->
+
+              <!--3er col-->
+              <div class="col-md-3">
+                Localidad: <strong>{{localidad}}, {{direccion}}</strong><br />
+
+                mail: <strong>{{mail}}</strong> <br>
+
+                Tel&eacute;fono: <strong>{{telefono}} <a style="color: #fff;" href="tel:{{telefono}}"><i
+                      class='bx bx-xs bxs-phone-outgoing icono-llamada'></i></a></strong>
+
+              </div>
+              <!--Fin 3er col-->
+
+
+              <div class="col-md-3 d-flex justify-content-end">
+                <div class="dropdown">
+                  <button style="background-color:#252525; color:#fff" class="btn dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Acciones
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/interaccion/{{id_interaccion}}">Ver</a></li>
+                    <li><a class="dropdown-item" href="/interaccion/borrar/{{id_interaccion}}">Borrar</a></li>
+
+                  </ul>
+                </div>
+
+              </div>
+
+            </div>
+            {{/each}}
+            <!--Fin Contenedor info-->
+            {{else}}
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="alert alert-success" role="alert">
+                  No hay interacciones con este estado!
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
+          </div>
+
+
+
+        </div><!--fin col-md-12 box-cajas-->
+
+      </div><!--fin row box-ind-->
+
+    </div><!--fin col-md-10-->
+
+  </div><!--fin row-->
+
+</div><!--fin container fluid-->
+
+
+<div class="row fondo-color-gris-icono">
+  <div class="col-md-6 d-flex align-items-center justify-content-start">
+    <i class='bx bxs-file-archive'> </i>
+  </div>
+  <div class="col-md-6 d-flex align-items-center justify-content-start">
+    <h6>Próximo contacto: {{prox_encuentro}}</h6>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-3 d-flex align-items-center justify-content-start"><button
+          class="{{estilo}}">{{estado_inter}}</button></div>
+    </div>
+  </div>

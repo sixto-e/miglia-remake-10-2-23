@@ -1,0 +1,165 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+
+        <div class="col-md-12 box-cajas">
+
+
+
+          <div class="row mt-2 mb-2">
+            <div class="col-md-4">
+              <h4>Editando interacción</h4>
+            </div>
+          </div>
+
+          <form action="/interaccion/editar/{{id_interaccion}}/create" method="post" class="form-group">
+
+            <div class="row">
+              <div class="col-md-4">
+                <label class="form-label" for="">Cliente: </label>
+
+                <select name="id_cliente" id="" class="form-control">
+                  {{#each info_interaccion}}
+                  <option value="{{id}}" selected>Actualmente {{razon_social}} - {{cuit}}</option>
+                  {{/each}}
+                  {{#each clientes}}
+                  <option value="{{id}}"> Redefinir a {{razon_social}} - {{cuit}}</option>
+                  {{/each}}
+
+                </select>
+
+
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label" for="">Usuario responsble: </label>
+                <select class="form-control" name="id_user_responsable" id="">
+
+                  {{#each info_interaccion}}
+                  <option value="{{id_responsable}}" selected>Responsable actual {{responsable}} </option>
+                  {{/each}}
+
+                  {{#each users_responsables}}
+                  <option value="{{id}}"> Asignar a {{nombre}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label" for="">Estado máquina buscada: </label>
+                <select class="form-control" name="estado" id="">
+
+
+                  {{#each info_interaccion}}
+                  <option value="{{id_estado_maq}}" selected>Buscado actualmente {{estado}} </option>
+                  {{/each}}
+
+                  {{#each estados_interaccion}}
+                  <option value="{{id}}"> Redefinir a {{descrip}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-4">
+                <label class="form-label" for="">Estado de interacción: </label>
+                <select class="form-control" name="estado_interaccion" id="">
+
+
+                  {{#each info_interaccion}}
+                  <option value="{{id_estado_inter}}" selected>Estado actual {{estado_inter}} </option>
+                  {{/each}}
+
+                  {{#each int_estado}}
+                  <option value="{{id}}">Redefinir a {{descrip}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+              <div class="col-md-4">
+
+                <label class="form-label" for="">Interés comercial: </label>
+                <select class="form-control" name="interes_en" id="">
+                  {{#each info_interaccion}}
+                  <option value="{{id_interes_en}}" selected>Interés actual {{interes}} </option>
+                  {{/each}}
+
+                  {{#each sec_interes}}
+                  <option value="{{id}}">Redefinir a {{descrip}}</option>
+                  {{/each}}
+                </select>
+
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label" for="">Tipo maquinaria: </label>
+                <select class="form-control" name="tipo" id="">
+
+                  {{#each info_interaccion}}
+                  <option value="{{id_tipo}}" selected>Tipo actual {{tipo}} </option>
+                  {{/each}}
+                  {{#each tipo_maq}}
+                  <option value="{{id}}">Redefinir a {{tipo}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-md-4">
+                <label class="form-label" for="">Próximo contacto: </label>
+
+                <input class="form-control" type="date" name="prox_contacto" value="{{fechaFormateada}}">
+
+              </div>
+            </div>
+
+
+
+            <div class="row mt-4">
+              <h6>Observación sobre la Interacción</h6>
+              <div class="textarea-container">
+                {{#each info_interaccion}}
+                <textarea name="observacion"
+                  placeholder="No hay observaciones cargadas. Puedes agregar una en la sección de edición.">{{observacion_interaccion}}</textarea>
+                {{/each}}
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-3 mt-3 mb-3">
+                <button type="submit" class="btn-sm btn btn-warning">Aplicar cambios</button>
+              </div>
+            </div>
+
+          </form>
+
+
+
+        </div><!--fin col-md-12 box-cajas-->
+
+      </div><!--fin row box-ind-->
+
+    </div><!--fin col-md-10-->
+
+  </div><!--fin row-->
+
+</div><!--fin container fluid-->

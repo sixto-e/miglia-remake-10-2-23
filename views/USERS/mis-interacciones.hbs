@@ -1,0 +1,87 @@
+{{#if interacciones}}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 sinpadding">
+			<div id="logo">
+				<img src="/images/de_grande_logo.png" width="100%" />
+			</div><!--Fin de logo -->
+			<div id="barra-lateral"><!--Comienza Barra Lateral -->
+				<div id="bloque-menu-lateral">
+					<div id="bloque-menu-unico">
+						<div id="titulo-de-bloque-menu">Interacciones</div>
+						<div id="item-de-bloque-menu"><img src="/images/icono-interacion.png" width="18" height="15" />
+							<a href="/mis-interacciones/{{id_user}}">Mis interacciones</a>
+						</div>
+						<div id="item-de-bloque-menu"><img src="/images/icono-agregar.png" width="18" height="15" /> <a
+								href="/cargar-nueva-interaccion/data-cliente">Agregar interacción</a></div>
+					</div><!--Fin del bloque del menu unico -->
+					<div id="bloque-menu-unico">
+					</div><!--Fin del bloque del menu unico -->
+					<div id="bloque-menu-unico">
+					</div><!--Fin del bloque del menu unico -->
+					<div id="bloque-menu-unico">
+					</div><!--Fin del bloque del menu unico -->
+				</div><!--Fin Bloque Menu Lateral -->
+			</div><!--Fin Barra Lateral -->
+		</div>
+		<!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+		<div class="col-md-10 sinpadding">
+			{{> cabeceraBeta}}<!--cabecera-->
+			<div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+				<div class="col-md-12 box-cajas">
+					<div class="alert alert-info" role="alert">
+						Interacciones cargadas !
+					</div>
+				</div><!--fin col-md-12 box-cajas-->
+			</div><!--fin row box-ind-->
+		</div><!--fin col-md-10-->
+	</div><!--fin row-->
+	<div><!--fin container fluid-->
+
+		{{else}}
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2 sinpadding">
+					<div id="logo">
+						<img src="/images/de_grande_logo.png" width="100%" />
+					</div><!--Fin de logo -->
+					<div id="barra-lateral"><!--Comienza Barra Lateral -->
+						<div id="bloque-menu-lateral">
+							<div id="bloque-menu-unico">
+								<div id="titulo-de-bloque-menu">Interacciones</div>
+								<div id="item-de-bloque-menu"><img src="/images/icono-interacion.png" width="18" height="15" /> <a
+										href="/mis-interacciones/{{id_user}}">Mis
+										interacciones</a>
+								</div>
+								<div id="item-de-bloque-menu"><img src="/images/icono-agregar.png" width="18" height="15" /> <a
+										href="/cargar-nueva-interaccion/data-cliente">Agregar
+										interacción</a>
+								</div>
+								<div id="bloque-menu-unico">
+								</div><!--Fin del bloque del menu unico -->
+								<div id="bloque-menu-unico">
+								</div><!--Fin del bloque del menu unico -->
+								<div id="bloque-menu-unico">
+								</div><!--Fin del bloque del menu unico -->
+							</div><!--Fin del bloque del menu unico -->
+						</div><!--Fin Bloque Menu Lateral -->
+					</div><!--Fin Barra Lateral -->
+				</div>
+				<!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+				<div class="col-md-10 sinpadding">
+					{{> cabeceraBeta}}<!--cabecera-->
+					<div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+						<div class="col-md-12 box-cajas">
+							<div class="col-md-3">
+								<div class="alert alert-info mt-3" role="alert">
+									No tenés interacciones cargadas !
+								</div>
+							</div>
+						</div><!--fin col-md-12 box-cajas-->
+					</div><!--fin row box-ind-->
+				</div><!--fin col-md-10-->
+			</div><!--fin row-->
+			<div><!--fin container fluid-->
+				{{/if}}

@@ -1,0 +1,46 @@
+<div class="container-fluid">
+
+	<div class="row">
+
+		<div class="col-md-2 sinpadding">
+			{{> lateralBeta}}
+		</div>
+
+		<div class="col-md-10 sinpadding">
+
+			{{> cabeceraBeta}}
+
+			<div class="row box-ind sinpadding">
+
+				<div class="col-md-12 box-cajas">
+
+					<div class="row">
+						<div class="row mt-2 mb-2">
+							<div class="col-md-12">
+								<h4>Cargar nueva foto destacada</h4>
+							</div>
+						</div>
+
+						<form action="/cargar-foto-destacada/{{id_maquinaria}}/create" class="form-group" method="post"
+							enctype="multipart/form-data">
+
+							<label for="" class="form-label">Elija la foto: </label>
+							<input required class="form-control w-50" type="file" name="foto" placeholder="Seleccione una foto">
+
+							<div class="row">
+								<div class="col-md-3 mt-3 mb-3">
+									<button type="submit" class="btn btn-sm btn-primary">Establecer foto</button>
+								</div>
+							</div>
+						</form>
+
+					</div>
+
+				</div><!--fin row box-ind-->
+
+			</div><!--fin col-md-10-->
+
+		</div><!--fin row-->
+
+
+		<div><!--fin container fluid-->

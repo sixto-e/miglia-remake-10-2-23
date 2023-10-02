@@ -1,0 +1,121 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+
+        <div class="col-md-12 box-cajas">
+
+          <div class="row mt-2 mb-2">
+            <div class="col-md-4">
+              <h4>Cargar maquinaria</h4>
+            </div>
+          </div>
+
+          <form class="form-group" action="/cargar-nueva-maquinaria/create" method="post">
+
+            <div class="row">
+
+              <div class="col-md-4">
+                <label class="form-label" for="">Tipo: </label>
+                <select class="form-control" name="fk_tipo" id="">
+                  {{#each tipos_de_maquinarias}}
+                  <option value="{{id}}">{{tipo}}</option>
+                  {{/each}}
+                </select>
+
+              </div>
+              <div class="col-md-4">
+                <label class="form-label" for="">Estado: </label>
+                <select class="form-control" name="fk_estado" id="">
+                  {{#each maq_estados}}
+                  <option value="{{id}}">{{descrip}}</option>
+                  {{/each}}
+                </select>
+
+              </div>
+              <div class="col-md-4">
+                <label class="form-label" for="">Modalidad: </label>
+                <select class="form-control" name="fk_modalidad" id="">
+                  {{#each maq_modalidades}}
+                  <option value="{{id}}">{{descrip}}</option>
+                  {{/each}}
+                </select>
+
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-4">
+                <label class="form-label" for="">Disponibilidad: </label>
+                <select class="form-control" name="fk_disponibilidad" id="">
+                  {{#each maq_disponibilidad}}
+                  <option value="{{id}}">{{descrip}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+
+              <div class="col-md-4">
+                <label class="form-label" for="">Precio USD: </label>
+                <input required class="form-control no-comma-dot" type="number" name="precio" id="" placeholder="Precio - (Núm. Entero sin puntos ni comas)">
+
+
+              </div>
+              <div class="col-md-4">
+                <label class="form-label" for="">Modelo y marca: </label>
+                <input required class="form-control no-comma-dot" type="text" name="modelo" id="" placeholder="Modelo y Marca">
+
+              </div>
+
+            </div>
+            <div class="row">
+
+              <div class="col-md-3 mt-3 mb-3">
+                <button type="submit" class="btn-sm btn btn-warning">Cargar</button>
+              </div>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+
+    </div><!--fin col-md-12 box-cajas-->
+
+  </div><!--fin row box-ind-->
+
+</div><!--fin col-md-10-->
+
+</div><!--fin row-->
+
+
+<div><!--fin container fluid-->
+
+  <script>
+    var noCommaDotInputs = document.querySelectorAll('.no-comma-dot');
+
+    noCommaDotInputs.forEach(function (input) {
+      input.addEventListener('keydown', function (event) {
+        // Lista de caracteres que deseas bloquear
+        var blockedCharacters = [',', '-', '.', '\'', '\"', '+', '!', '#', '$', '%', '&', '/', '(', ')', '=', '?', '¡'];
+
+        if (blockedCharacters.includes(event.key)) {
+          event.preventDefault();
+        }
+      });
+    });
+  </script>

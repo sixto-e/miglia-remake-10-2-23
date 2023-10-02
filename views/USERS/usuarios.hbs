@@ -1,0 +1,226 @@
+{{#if all}}
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+
+        <div class="col-md-12 box-cajas">
+
+          <div class="row">
+            <div class="col-md-4 mt-2">
+              <h4>Usuarios <i class='bx bx-check'></i></h4>
+            </div>
+
+            <div class="col-md-8 d-flex aling-items-center justify-content-end p-3 opc-inter">
+
+              <a class="btn btn-sm btn-warning" href="/cargar-usuario"> Agregar </a>
+
+              <div style="margin-left: 10px;"></div>
+
+              <a class="btn btn-sm btn-outline-dark  filtro-inter" href="/usuarios/borrados"> <i
+                  class="fa-solid fa-rectangle-list"></i> Ver borrados</a>
+
+            </div>
+          </div>
+
+
+
+          {{#if usuarios}}
+
+          {{#each usuarios}}
+          <div class="container-fluid espacio-bloque">
+
+            <div class="row">
+              <div class="col-md-1 fondo-color-verde-icono  d-flex justify-content-center align-items-center">
+                <i class='bx bx-md bxs-user-check'></i>
+              </div>
+              <div class="col-md-11 fondo-color-gris-contenido">
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <div>
+                      Nombre: <strong> {{nombre}} </strong>
+                    </div>
+                    <div>
+                      Perfil: <strong> {{p_descrip}}</strong>
+                    </div>
+                    <div>
+                      Rol: <strong> {{t_descrip}}</strong>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div>
+                      Teléfono: <strong> {{telefono}}</strong>
+                    </div>
+
+                    <div>
+                      Mail: <strong> {{mail}}</strong>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 propiedad-columna-bloque-boton">
+
+                    <div class="dropdown">
+                      <button class="btn-sm btn btn-outline-dark  dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Acciones
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/usuario/{{id}}">ver</a></li>
+                        <li><a class="dropdown-item" href="#"></a></li>
+                        <li><a class="dropdown-item" href="/usuarios/borrar/{{id}}">Borrar</a></li>
+                      </ul>
+                    </div>
+                  </div><!--Findde Col md3 -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+
+          {{else}}
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <div class="alert alert-success text-center" role="alert">
+                No hay usuarios !
+              </div>
+            </div>
+          </div>
+          {{/if}}
+
+        </div><!--fin col-md-12 box-cajas-->
+
+      </div><!--fin row box-ind-->
+
+    </div><!--fin col-md-10-->
+
+  </div><!--fin row-->
+
+
+  <div><!--fin container fluid-->
+    <!---->
+
+
+    {{else}}
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-md-2 sinpadding">
+          {{> lateralBeta}}
+        </div>
+        <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+        <div class="col-md-10 sinpadding">
+
+          {{> cabeceraBeta}}<!--cabecera-->
+
+
+          <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+
+            <div class="col-md-12 box-cajas">
+
+              <div class="row">
+                <div class="col-md-4 mt-2">
+
+                  <h4>Usuarios no activos</h4>
+
+                </div>
+
+                <div class="col-md-8 d-flex aling-items-center justify-content-end p-3 opc-inter">
+
+                  <a class="btn-sm btn btn-outline-dark" href="/usuarios"> <i class="fa-solid fa-rectangle-list"></i>
+                    Ver activos</a>
+
+                </div>
+              </div>
+
+
+
+              {{#if usuarios_borrados}}
+
+              {{#each usuarios_borrados}}
+              <div class="container-fluid espacio-bloque">
+                <div class="row">
+                  <div class="col-md-1 fondo-color-rojo-icono d-flex justify-content-center align-items-center">
+                    <i class='bx bx-md bxs-user-x'></i>
+                  </div>
+                  <div class="col-md-11 fondo-color-gris-contenido">
+                    <div class="row">
+
+                      <div class="col-md-4">
+                        <div>
+                          Nombre: <strong>{{nombre}} </strong>
+                        </div>
+                        <div>
+                          Perfil: <strong>{{p_descrip}}</strong>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div>
+                          Teléfono: <strong>{{telefono}}</strong>
+                        </div>
+
+                        <div>
+                          Mail: <strong>{{mail}}</strong>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4 propiedad-columna-bloque-boton">
+                        <div class="dropdown">
+                          <button class="btn-sm btn btn-outline-dark dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Acciones
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/usuario/borrado/{{id}}">ver</a></li>
+                            <li><a class="dropdown-item" href="#"></a></li>
+                            <li><a class="dropdown-item" href="/usuarios/habilitar/{{id}}">Activar</a></li>
+                          </ul>
+                        </div>
+
+                      </div><!--Findde Col md3 -->
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+
+              {{else}}
+              <div class="row mt-3">
+                <div class="col-md-3">
+                  <div class="alert alert-success text-center" role="alert">
+                    No hay usuarios borrados !
+                  </div>
+                </div>
+              </div>
+              {{/if}}
+
+
+            </div><!--fin col-md-12 box-cajas-->
+
+          </div><!--fin row box-ind-->
+
+        </div><!--fin col-md-10-->
+
+      </div><!--fin row-->
+
+
+      <div><!--fin container fluid-->
+        {{/if}}

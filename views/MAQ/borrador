@@ -1,0 +1,71 @@
+       <!--Listado de maquinarias activas-->
+
+          {{#each datos}}
+          <div class="container-fluid espacio-bloque">
+            <div class="row">
+              <div class="col-md-3">
+                <img src="{{public_url}}" alt="No hay imagen cargada" class="custom-img img-fluid">
+              </div>
+              <div class="col-md-9 fondo-color-gris-contenido">
+                <div class="row">
+
+                  <div class="col-md-3">
+                    <div>
+                      <button class="{{estilo}}">{{estado}}</button>
+                      <br>
+                      Tipo:<strong> {{tipo}}</strong>
+                    </div>
+
+                    <div>
+                      Modalidad:<strong> {{modalidad}}</strong>
+                    </div>
+
+                    <div>
+                      Modelo y marca:<strong> {{modelo}}</strong>
+                    </div>
+
+
+
+                  </div>
+
+                  <div class="col-md-3">
+                    <br>
+                    <div>
+                      Disponibilidad: <strong> {{disponibilidad}} </strong>
+                    </div>
+
+                    <div>
+                      Precio: <strong>${{precio}} </strong>
+                    </div>
+
+
+                    <div>
+                      Agragada el: <strong> {{fecha_de_creacion}} </strong>
+                    </div>
+
+
+
+                  </div>
+
+                  <div class="col-md-3 d-flex justify-content-end align-items-center">
+                    <div class="dropdown">
+                      <button class="btn-sm btn btn-outline-dark dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Acciones
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/maquinaria/{{id_maquinaria}}">Ver</a></li>
+                        <li><a class="dropdown-item" href="#"></a></li>
+                        <li><a class="dropdown-item" href="/cargar-foto-destacada/{{id_maquinaria}}">Establecer foto</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#"></a></li>
+                        <li><a class="dropdown-item" href="/maquinaria/borrar/{{id_maquinaria}}">Borrar</a></li>
+
+                      </ul>
+                    </div>
+                  </div><!--Findde Col md3 -->
+
+                </div>
+              </div>
+            </div>
+          </div>

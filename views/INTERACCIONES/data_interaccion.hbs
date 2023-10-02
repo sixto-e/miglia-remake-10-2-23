@@ -1,0 +1,125 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+
+        <div class="col-md-12 box-cajas">
+
+
+
+          <div class="row mt-2 mb-2">
+            <div class="col-md-6">
+              <h4>Nueva interacción - Datos interacción</h4>
+            </div>
+          </div>
+
+          <form action="/cargar-nueva-interaccion/data-interaccion/create" method="post" class="form-group">
+
+            <div class="row">
+              <div class="col-md-4">
+                <label class="form-label" for="">ID del cliente: </label>
+                <input required type="text" readonly class="form-control" value="{{id_de_cliente_a_relacionar}}" name="id_cliente">
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label" for="">ID del usuario responsble: </label>
+                <select class="form-control" name="id_user_responsable" id="">
+                  {{#each users_responsables}}
+                  <option value="{{id}}">{{nombre}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label" for="">ID de estado máquina buscada: </label>
+                <select class="form-control" name="estado" id="">
+                  {{#each estados_interaccion}}
+                  <option value="{{id}}">{{descrip}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-4">
+                <label class="form-label" for="">ID estado de interacción: </label>
+                <select class="form-control" name="estado_interaccion" id="">
+                  {{#each int_estado}}
+                  <option value="{{id}}">{{descrip}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+              <div class="col-md-4">
+
+                <label class="form-label" for="">ID de interes comercial: </label>
+                <select class="form-control" name="interes_en" id="">
+                  {{#each sec_interes}}
+                  <option value="{{id}}">{{descrip}}</option>
+                  {{/each}}
+                </select>
+
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label" for="">ID de tipo maquinaria: </label>
+                <select class="form-control" name="tipo" id="">
+                  {{#each tipo_maq}}
+                  <option value="{{id}}">{{tipo}}</option>
+                  {{/each}}
+                </select>
+              </div>
+
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-md-4">
+                <label class="form-label" for="">Próximo contacto: </label>
+                <input required class="form-control" type="date" name="prox_contacto" placeholder="Próximo contacto">
+              </div>
+            </div>
+
+
+            <div class="row">
+
+              <div class="textarea-container">
+
+                <textarea name="observacion" placeholder="Escribe aquí las observaciones sobre la interacción."></textarea>
+
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-3 mt-3 mb-3">
+                <button type="submit" class="btn-sm btn btn-warning">Finalizar intereacción</button>
+              </div>
+            </div>
+
+          </form>
+
+
+
+        </div><!--fin col-md-12 box-cajas-->
+
+      </div><!--fin row box-ind-->
+
+    </div><!--fin col-md-10-->
+
+  </div><!--fin row-->
+
+</div><!--fin container fluid-->

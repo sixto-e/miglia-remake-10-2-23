@@ -1,0 +1,87 @@
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+
+        <div class="col-md-12 box-cajas">
+
+          <div class="row mt-2 mb-2">
+
+            <div class="col-md-4">
+              <h4>Tipos de maquinarias <i class='bx bx-check'></i></h4>
+            </div>
+
+            <div class="col-md-8 d-flex aling-items-center justify-content-end p-3 opc-inter">
+              <a href="/cargar-nuevo-tipo-maquinaria" class="btn btn-sm btn-warning">Agregar </a>
+            </div>
+
+          </div>
+
+
+
+
+          {{#each tipos}}
+          <div class="container-fluid espacio-bloque">
+            <div class="row">
+              <div style="background-color: #252525; "
+                class="col-md-1 fondo-color-gris-icono d-flex justify-content-center align-items-center">
+                <img src="/images/icono-maquinaria.png" width="30px" height="30px" class="img-fluid" alt="">
+              </div>
+              <div class="col-md-11 fondo-color-gris-contenido">
+                <div class="row">
+
+                  <div class="col-md-4 propiedad-columna-bloque-txt">
+                    <div>
+                      Descripción: <strong>{{tipo}}</strong>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-4 propiedad-columna-bloque-txt">
+
+                  </div>
+
+                  <div class="col-md-4 propiedad-columna-bloque-boton">
+
+                    <div class="dropdown">
+                      <button class="btn-outline-dark btn-sm btn dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Acciones
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/editar-tipo-maquinaria/{{id}}">Editar</a>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div><!--Findde Col md3 -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+
+        </div><!--fin col-md-12 box-cajas-->
+
+      </div><!--fin row box-ind-->
+
+    </div><!--fin col-md-10-->
+
+  </div><!--fin row-->
+
+
+  <div><!--fin container fluid-->
+    <!---->

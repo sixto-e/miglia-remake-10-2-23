@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 sinpadding">
+      {{> lateralBeta}}
+    </div>
+    <!--DENTRO DE ESTE DIV VA: la cabecera y el contenido-->
+
+    <div class="col-md-10 sinpadding">
+
+      {{> cabeceraBeta}}<!--cabecera-->
+
+      <div class="row box-ind sinpadding"><!-- Dentro de este div va todo el contenido-->
+        <div class="col-md-12 box-cajas">
+
+          <div class="row mt-2 mb-2">
+            <div class="col-md-4">
+              <h4>Cargar tipo de maquinaria</h4>
+            </div>
+          </div>
+
+          <form class="form-group" action="/cargar-nuevo-tipo-maquinaria/create" method="post">
+
+            <div class="row mb-2">
+
+              <div class="col-md-6">
+                <input  required class="form-control no-comma-dot" type="text" name="tipo" placeholder="Tipo de maquinaria">
+              </div>
+
+              <div class="col-md-3">
+                <button type="submit" class="btn-sm btn btn-warning">Cargar</button>
+              </div>
+
+            </div>
+
+          </form>
+
+        </div><!--fin col-md-12 box-cajas-->
+
+      </div><!--fin row box-ind-->
+
+    </div><!--fin col-md-10-->
+
+  </div><!--fin row-->
+
+
+  <div><!--fin container fluid-->
+
+    <script>
+      var noCommaDotInputs = document.querySelectorAll('.no-comma-dot');
+
+      noCommaDotInputs.forEach(function (input) {
+        input.addEventListener('keydown', function (event) {
+          // Lista de caracteres que deseas bloquear
+          var blockedCharacters = [',', '-', '.', '\'', '\"', '+', '!', '#', '$', '%', '&', '/', '(', ')', '=', '?', '¡'];
+
+          if (blockedCharacters.includes(event.key)) {
+            event.preventDefault();
+          }
+        });
+      });
+    </script>
